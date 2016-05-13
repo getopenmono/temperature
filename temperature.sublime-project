@@ -1,0 +1,22 @@
+{ "folders":
+  [ { "path": "."
+    , "folder_exclude_patterns": ["build"]
+    , "file_exclude_patterns": ["*.map","*.elf"]
+    }
+  ]
+, "build_systems":
+  [ { "name": "temperature"
+    , "file_regex": "^([^\n:]+):([0-9]+):([0-9]+): (.*)$"
+    , "cmd": "make"
+    , "variants":
+      [ { "name": "Clean"
+        , "cmd": ["make","clean"]
+        }
+      , { "name": "Install"
+        , "cmd": ["make","install"]
+        }
+      ]
+    , "working_dir": "${project_path}"
+    }
+  ]
+}
