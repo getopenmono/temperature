@@ -42,6 +42,7 @@ private:
 	void showLogo ();
     void wifiDidStart();
 
+	mono::Timer sleeper;
 	Toucher toucher;
 	GraphView graphView;
 	mono::ui::BackgroundView bg;

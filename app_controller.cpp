@@ -26,12 +26,14 @@ void Toucher::RespondTouchEnd(TouchEvent &)
 
 AppController::AppController ()
 :
+	sleeper(10*60*1000,true),
 	toucher(this),
 	graphView(40,220-87),
 	bg(mono::display::BlackColor),
 	timer(1000),
 	useCelcius(false)
 {
+	sleeper.setCallback(mono::IApplicationContext::EnterSleepMode);
     displayWifiLogo = false;
 }
 
@@ -46,6 +48,7 @@ void AppController::monoWakeFromReset ()
 
     uploader.wifiStarted.attach<AppController>(this, &AppController::wifiDidStart);
     Timer::callOnce<InternetUpload>(200, &uploader, &InternetUpload::init);
+	sleeper.Start();
 }
 
 void AppController::monoWakeFromSleep ()
@@ -80,6 +83,7 @@ float AppController::getTemperatureInCelcius ()
 
 void AppController::changeUnit ()
 {
+	sleeper.Start();
 	useCelcius = ! useCelcius;
 	update();
 }
