@@ -39,9 +39,6 @@ AppController::AppController ()
 
 void AppController::monoWakeFromReset ()
 {
-#ifdef LINEAR_SENSOR
-	IApplicationContext::Instance->Temperature = &therm;
-#endif
 	bg.show();
 	timer.setCallback<AppController>(this,&AppController::measureAndUpdate);
 	timer.Start();
