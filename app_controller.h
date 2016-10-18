@@ -6,10 +6,6 @@
 #include "graph_view.h"
 #include "internet_upload.h"
 
-#ifdef LINEAR_SENSOR
-#include "ltc2983.h"
-#endif
-
 class AppController;
 
 class Toucher : public mono::TouchResponder {
@@ -50,10 +46,6 @@ private:
 	mono::Timer timer;
 	bool useCelcius;
     InternetUpload uploader;
-
-#ifdef LINEAR_SENSOR
-	LTC2983 therm;
-#endif
 };
 
 #endif // __temperature_appcontroller_h

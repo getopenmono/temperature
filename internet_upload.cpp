@@ -1,5 +1,3 @@
-
-
 #include "internet_upload.h"
 #include <io/file.h>
 #include <wireless/redpine_module.h>
@@ -24,6 +22,12 @@ InternetUpload::InternetUpload() :
 
 void InternetUpload::init()
 {
+#ifdef WIFI_SSID
+    #warning Using static Wifi configuration
+    ssid = String(WIFI_SSID);
+    password = String(WIFI_PASSWORD);
+    url = String(WIFI_URL);
+#else
     //try FS
     FILE *ssidFile = 0;
     for (int t=0; t<10; t++) {
@@ -42,6 +46,8 @@ void InternetUpload::init()
     ssid = File::readFirstLine(ssidFilename);
     password = File::readFirstLine(passFilename);
     url = File::readFirstLine(urlFileName);
+#endif
+
     connectWifi();
 }
 
