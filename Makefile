@@ -1,6 +1,6 @@
-SHELL=/bin/bash
-TARGET = temperature
-ARCH="/usr/local/gcc-arm-none-eabi-5_2-2015q4/bin/arm-none-eabi-"
-LINEAR_SENSOR=false
+MONO_PATH=/usr/local/openmono
+include $(MONO_PATH)/predefines.mk
 
-include Makefile.mono
+TARGET=temperature
+
+include $(MONO_PATH)/mono.mk
