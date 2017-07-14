@@ -6,8 +6,7 @@
 #include <mbed.h>
 #include <SDFileSystem.h>
 #include <wireless/module_communication.h>
-#include <mn_string.h>
-#include <http_client.h>
+#include <mono.h>
 
 using namespace mono;
 

@@ -95,7 +95,7 @@ void InternetUpload::httpCompletion(network::INetworkRequest::CompletionEvent *e
         else
         {
             int delay = lastSendTime+1000000 - us_ticker_read();
-            Timer::callOnce<InternetUpload>(delay>0?delay/1000:0, this, &InternetUpload::beginDownload);
+            mono::Timer::callOnce<InternetUpload>(delay>0?delay/1000:0, this, &InternetUpload::beginDownload);
         }
 
     }

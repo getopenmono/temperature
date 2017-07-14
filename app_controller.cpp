@@ -44,7 +44,7 @@ void AppController::monoWakeFromReset ()
 	timer.Start();
 
     uploader.wifiStarted.attach<AppController>(this, &AppController::wifiDidStart);
-    Timer::callOnce<InternetUpload>(200, &uploader, &InternetUpload::init);
+    mono::Timer::callOnce<InternetUpload>(200, &uploader, &InternetUpload::init);
 	sleeper.Start();
 }
 
@@ -56,7 +56,7 @@ void AppController::monoWakeFromSleep ()
 void AppController::monoWillGotoSleep ()
 {
     //remove power from exspansion connector
-    CyPins_ClearPin(EXPANSION_PWR_ENABLE);
+    //CyPins_ClearPin(EXPANSION_PWR_ENABLE);
 }
 
 float AppController::getTemperatureInCelcius ()
