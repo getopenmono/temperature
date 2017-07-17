@@ -1,4 +1,4 @@
-MONO_PATH=/usr/local/openmono
+MONO_PATH=$(shell monomake path --bare)
 include $(MONO_PATH)/predefines.mk
 
 TARGET=temperature
